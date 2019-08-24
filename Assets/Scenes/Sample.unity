@@ -879,6 +879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothTime: 0.2
+  rotationSpeed: 50
+  zoomDampening: 15
   target: {fileID: 13532796}
   offset: {x: 0, y: 0, z: -8}
   angle: 0
@@ -887,20 +889,22 @@ MonoBehaviour:
     target: {fileID: 928974319}
     offset: {x: 0, y: 0, z: -2}
     angle: 30
+    toggleFold: 0
   - id: body
     target: {fileID: 13532796}
     offset: {x: 0, y: 0, z: -3}
     angle: 0
+    toggleFold: 0
   - id: hand
     target: {fileID: 251186701}
     offset: {x: 0, y: 0, z: -2.5}
     angle: 30
+    toggleFold: 0
   - id: leg
     target: {fileID: 1664326810}
     offset: {x: 0, y: 0, z: -2}
     angle: -30
-  rotationSpeed: 50
-  zoomDampening: 15
+    toggleFold: 0
 --- !u!1 &826518470
 GameObject:
   m_ObjectHideFlags: 0

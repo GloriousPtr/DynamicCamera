@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraCustomization : MonoBehaviour {
@@ -30,27 +29,16 @@ public class CameraCustomization : MonoBehaviour {
     private float xDeg;
     private Quaternion currentRotation;
     private Quaternion desiredRotation;
-    private Quaternion rotation;
 
     private float touchPosition;
     private Vector3 targetPosition;
     private Vector3 vel;
+    private Feature feature;
 
     #endregion
 
     private void Start() { Init(); }
     private void OnEnable() { Init(); }
-
-    private void OnValidate()
-    {
-        if(target == null)
-            return;
-        // Set Positions
-        transform.position = target.position + offset;
-
-        // Set Rotations
-        target.rotation = Quaternion.Euler(0, angle, 0);
-    }
 
     private void Init()
     {
@@ -76,7 +64,6 @@ public class CameraCustomization : MonoBehaviour {
         desiredRotation = Quaternion.Euler(0, xDeg, 0);
         currentRotation = target.rotation;
         target.rotation = Quaternion.Lerp(currentRotation, desiredRotation, Time.deltaTime * zoomDampening);
-        transform.rotation = rotation;
     }
 
     private void SetInput()
@@ -97,23 +84,77 @@ public class CameraCustomization : MonoBehaviour {
 #endif
 	}
 
-    private Feature feature;
-    public void PositionCamera(string id)
+    /// <summary>
+    /// For positioning camera, simply call function without Parameter to position camera to base target
+    /// </summary>
+    /// <param name="id">ID of the Part to focus on</param>
+    public void PositionCamera(string id = "")
     {
-        feature = features.Find(x => x.id.Equals(id));
-        if (feature == null)
+        // For Base Target
+        if (id.Equals(string.Empty))
+        {
+            if (target == null)
+                throw new System.Exception("Kindly Assign Base Target");
+
+            targetPosition = target.position + offset;
+            xDeg = angle;
             return;
+        }
+
+        // For Parts
+        feature = features.Find(x => x.id.Equals(id));
+
+        if (feature == null)
+            throw new System.Exception(string.Format("{0} ID Not Found", id));
+
+        if (feature.target == null)
+            throw new System.Exception(string.Format("Kindly Assign {0}'s Target", id));
 
         targetPosition = feature.target.position + feature.offset;
         xDeg = feature.angle;
+    }
+
+    /// <summary>
+    /// Only for preview mode, Used in editor script
+    /// </summary>
+    /// <param name="preview"></param>
+    /// <param name="id">ID of the Part to focus on</param>
+    public void PositionCamera(bool preview, string id = "")
+    {
+        if (!preview)
+            return;
+
+        if (id.Equals(string.Empty))
+        {
+            if(target == null)
+                throw new System.Exception("Kindly Assign Base Target");
+
+            transform.position = target.position + offset;
+            target.rotation = Quaternion.Euler(0, angle, 0);
+            return;
+        }
+        
+        feature = features.Find(x => x.id.Equals(id));
+
+        if (feature == null)
+            throw new System.Exception(string.Format("{0} ID Not Found", id));
+
+        if (feature.target == null)
+            throw new System.Exception(string.Format("Kindly Assign {0}'s Target", id));
+
+        transform.position = feature.target.position + feature.offset;
+        target.rotation = Quaternion.Euler(0, feature.angle, 0);
     }
 }
 
 [System.Serializable]
 public class Feature
 {
-    public string id;
+    public string id = "ChangeIdHere";
     public Transform target;
     public Vector3 offset = new Vector3(0,0,-3);
     public float angle;
+
+    // For Editor Only
+    public bool toggleFold;
 }
