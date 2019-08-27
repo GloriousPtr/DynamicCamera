@@ -1,4 +1,4 @@
-# PlayerCustomizationScreen
+# DynamicCamera
 
 Thanks for checking out the project!
 
@@ -14,7 +14,7 @@ Unity version: 2019.2.1f1
 Platforms    : Windows/Mac/Linux/Android/IOS
 ```
 
-## What is it for ?
+## How it works ?
 - Camera would animate to the assigned target when `PositionCamera()` is called.
 - Parameters : 
 ```
@@ -42,6 +42,6 @@ as per above logic for id, the camera would snap to the position depending on id
 
 ![Image](https://github.com/mohitsethi32/PlayerCustomizationScreen/blob/master/Documentation/CustomizationCameraBase.png)
 
-## head view
+## Head view
 
 ![Image](https://github.com/mohitsethi32/PlayerCustomizationScreen/blob/master/Documentation/CustomizationCameraFace.png)
