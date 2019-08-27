@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,7 +191,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13532792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.25881907, z: 0, w: 0.9659259}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2.5, z: 1}
   m_Children:
@@ -860,7 +860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalPosition: {x: 0, y: 1, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -882,17 +882,17 @@ MonoBehaviour:
   rotationSpeed: 50
   zoomDampening: 15
   target: {fileID: 13532796}
-  offset: {x: 0, y: 0, z: -8}
-  angle: 0
+  offset: {x: 0, y: 1, z: -6}
+  angle: 30
   features:
   - id: head
     target: {fileID: 928974319}
     offset: {x: 0, y: 0, z: -2}
-    angle: 30
+    angle: 25.1
     toggleFold: 0
   - id: body
     target: {fileID: 13532796}
-    offset: {x: 0, y: 0, z: -3}
+    offset: {x: -0.32, y: 0, z: -3}
     angle: 0
     toggleFold: 0
   - id: hand
