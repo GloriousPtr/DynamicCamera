@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraCustomization : MonoBehaviour {
+public class DynamicCamera : MonoBehaviour {
 
     #region PublicVariables
 

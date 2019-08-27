@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(CameraCustomization))]
-public class CameraCustomizationEditor : Editor
+[CustomEditor(typeof(DynamicCamera))]
+public class DynamicCameraEditor : Editor
 {
     private float labelWidth = 150f;
     private float buttonWidth = 100f;
@@ -10,7 +10,7 @@ public class CameraCustomizationEditor : Editor
 
     public override void OnInspectorGUI()
 	{
-        CameraCustomization main = (CameraCustomization)target;
+        DynamicCamera main = (DynamicCamera)target;
 
         EditorGUILayout.Space();
 
