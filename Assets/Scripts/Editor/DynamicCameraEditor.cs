@@ -31,8 +31,11 @@ public class DynamicCameraEditor : Editor
         main.offset = EditorGUILayout.Vector3Field("Base Target Offset", main.offset);
         main.angle = EditorGUILayout.FloatField("Base Target Angle", main.angle);
 
-        if (GUI.changed)
+        if (GUI.changed && current == null)
+        {
+            CollapseAll();
             SetPosition();
+        }
 
         if (GUILayout.Button("Preview Base", GUILayout.Width(buttonWidth)))
         {
@@ -109,5 +112,11 @@ public class DynamicCameraEditor : Editor
     private void SetPosition(string id = "")
     {
         main.PositionCamera(true, id);
+    }
+
+    public void CollapseAll()
+    {
+        foreach (Feature f in main.features)
+            f.toggleFold = false;
     }
 }
